@@ -1,0 +1,3 @@
+window.OlvyConfig = {
+  workspaceAlias: "releases",
+};
