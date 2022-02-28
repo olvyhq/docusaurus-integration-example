@@ -20,11 +20,7 @@ This command starts a local development server and opens up a browser window. Mo
 
 ## Integrating Olvy
 
-1. Create a widget on the Olvy dashboard on [https://app.olvy.co/widgets/announcements](https://app.olvy.co/widgets/announcements). Customize it according to your needs. Decide the target element you want to use to open your widget and its selector.
-
-   By default it is `#olvy-whats-new` which means Olvy will look for an element with where `id="olvy-whats-new"` to link to your widget.
-
-2. First, let's add a "What's New" button to the Navbar. To do this, we've added the following in our `docusaurus.config.js` in themeConfig -> navbar -> items
+1. First, let's add a "What's New" button to the Navbar. To do this, we've added the following in our `docusaurus.config.js` in themeConfig -> navbar -> items
 
 ```
 
@@ -55,8 +51,6 @@ themeConfig:
 
 Now you'll be able to see a What's New link on Docusaurus site navbar.
 
-**NOTE: The id of the navigation item here is `olvy-whats-new`. You will need it to the Target Element selector you've added for your Widget on Olvy Dashboard. (in step 1 above)**
-
 3. Next let's add the Olvy script. In `docusaurus.config.js` add the following scripts in the `script` key
 
 ```
@@ -74,7 +68,7 @@ const config = {
       src: "/olvyConfig.js",
     },
     {
-      src: "https://app.olvy.co/scriptV2.js",
+      src: "https://app.olvy.co/script.js",
       async: true,
     },
   ],
@@ -90,7 +84,17 @@ The `olvyConfig.js` file we've referenced above doesn't exist yet. So in the nex
 
 ```
 window.OlvyConfig = {
-  workspaceAlias: "<your-subdomain>",
+  organisation: "<your-subdomain>",
+  target: "#olvy-whats-new",
+  type: "modal",
+  view: {
+    showSearch: false,
+    compact: false,
+    showHeader: true, // only applies when widget type is embed. you cannot hide header for modal and sidebar widgets
+    showUnreadIndicator: true,
+    unreadIndicatorColor: "#cc1919",
+    unreadIndicatorPosition: "top-right"
+  }
 };
 ```
 
@@ -98,7 +102,17 @@ Replace `<your-subdomain>` with your real subdomain. For example, if your Olvy r
 
 ```
 window.OlvyConfig = {
-  workspaceAlias: "acme",
+  organisation: "acme",
+  target: "#olvy-whats-new",
+  type: "modal",
+  view: {
+    showSearch: false,
+    compact: false,
+    showHeader: true, // only applies when widget type is embed. you cannot hide header for modal and sidebar widgets
+    showUnreadIndicator: true,
+    unreadIndicatorColor: "#cc1919",
+    unreadIndicatorPosition: "top-right"
+  }
 };
 ```
 

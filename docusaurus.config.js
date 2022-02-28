@@ -126,7 +126,7 @@ const config = {
       src: "/olvyConfig.js",
     },
     {
-      src: "https://app.olvy.co/scriptV2.js",
+      src: "https://app.olvy.co/script.js",
       async: true,
     },
   ],
